@@ -10,7 +10,7 @@ export const sendMessage= async (req,res)=>{
         const {id:receiverId} = req.params;
         const senderId=req.user._id;//current logged in user
         let conversation=await Conversation.findOne({
-            members:{$all:[senderId, receiverId]}
+            members: { $all:[senderId, receiverId]},
             })
             if(!conversation){
                 conversation=await Conversation.create({
@@ -33,8 +33,7 @@ export const sendMessage= async (req,res)=>{
     if(receiverSocketId){
         io.to(receiverSocketId).emit("newMessage",newMessage);
     }
-    res.status(201).json({
-        message:"Message sent successfully.",newMessage,});
+    res.status(201).json(newMessage);
    
     }
     catch(error){

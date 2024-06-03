@@ -9,9 +9,10 @@ import { SocketProvider } from '../context/SocketContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
    <AuthProvider>
-    <SocketProvider>    <App />
+    <SocketProvider>  
+      <App />
     </SocketProvider>
-
-  </AuthProvider>,</BrowserRouter>
+    </AuthProvider>
+    </BrowserRouter>
  
 )

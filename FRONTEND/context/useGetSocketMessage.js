@@ -7,6 +7,11 @@ const useGetSocketMessage = () => {
     const { messages, setMessage } = useConversation();
   
     useEffect(() => {
+      if (!socket) {
+        console.error("Socket not initialized");
+        return;
+    }
+
       socket.on("newMessage", (newMessage) => {
         const notification = new Audio(sound);
          notification.play();
